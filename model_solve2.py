@@ -5,7 +5,7 @@ Created on Tue Apr 12 13:55:20 2016
 @author: yiyuezhuo
 """
 
-from sympy import S, Eq, solve,Symbol
+from sympy import S, Eq, solve,Symbol,simplify
 
 '''arg'''
 Ca,Cb,ia,ib,L1a,L1b,L2a,L2b=S('Ca,Cb,ia,ib,L1a,L1b,L2a,L2b'.split(','))
@@ -70,3 +70,5 @@ map_y_P_c_i_N_W_L1_L2_h_f.update(map_y_P)
 #map_y_P_c_i_N_W_L1_L2_h_f[c]=map_y_c_i_L1_L2[c].subs(map_y_P)
 map_y_P_c_i_N_W_L1_L2_h_f.update({key:map_y_c_i_L1_L2[key].subs(map_y_P) for key in [c,i,L1,L2]})
 map_y_P_c_i_N_W_L1_L2_h_f.update({key:map_y_W_N_f_h[key].subs(map_y_P) for key in [W,N,f,h]})
+
+map_y_P_c_i_N_W_L1_L2_h_f={key:simplify(value) for key,value in map_y_P_c_i_N_W_L1_L2_h_f.items()}
